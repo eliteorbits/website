@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Stays — Elite Orbits</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="flights.html">Flights</a>
+      <a href="stays.html">Stays</a>
+      <a href="cars.html">Car Rentals</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" id="navAccountLink">Log In</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:40px;">
+  <div class="wrap">
+    <span class="crumb"><a href="index.html">Home</a> / Stays</span>
+    <h1>Hotels and Airbnbs, priced 40% below the standard rate.</h1>
+    <p>Same class of hotels and homes you'd find anywhere else — the saving is shown upfront, before you book.</p>
+  </div>
+</section>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="search-panel">
+      <form id="staySearchForm">
+        <div class="search-grid">
+          <div class="form-row">
+            <label for="country">Country</label>
+            <select id="country">
+              <option value="india">India</option>
+              <option value="usa">United States</option>
+              <option value="canada">Canada</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="city">City</label>
+            <select id="city"></select>
+          </div>
+          <div class="form-row">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin">
+          </div>
+          <div class="form-row">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout">
+          </div>
+          <div class="form-row">
+            <label for="stayType">Type</label>
+            <select id="stayType">
+              <option value="">Hotel &amp; Airbnb</option>
+              <option value="Hotel">Hotel only</option>
+              <option value="Airbnb">Airbnb only</option>
+            </select>
+          </div>
+
+          <div class="form-row full stepper-group" style="grid-column:1/-1;">
+            <div class="stepper-row" style="max-width:260px;">
+              <div class="stepper-label"><b>Guests</b>Total travelers</div>
+              <div class="stepper-controls">
+                <button type="button" data-step="guests" data-dir="-1">−</button>
+                <span id="guestsVal">2</span>
+                <button type="button" data-step="guests" data-dir="1">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-submit-row">
+          <button type="submit" class="btn-primary">Search Stays</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="results-status" id="resultsStatus"></p>
+    <div id="resultsWrap"></div>
+    <div class="booking-msg" id="bookingMsg"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-bottom" style="border-top:1px solid var(--line-silver);margin-top:40px;">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="cancellation-policy.html">Cancellation</a> · <a href="booking-policy.html">Booking</a> · <a href="cookie-policy.html">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="fallback-data.js"></script>
+<script src="app.js"></script>
+<script>
+  let allStays = [];
+  const guests = { guests: 2 };
+
+  document.querySelectorAll('.stepper-controls button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      guests.guests = Math.max(1, Math.min(12, guests.guests + Number(btn.dataset.dir)));
+      document.getElementById('guestsVal').textContent = guests.guests;
+    });
+  });
+
+  function populateCities() {
+    const country = document.getElementById('country').value;
+    const citySel = document.getElementById('city');
+    const cities = [...new Set(allStays.filter(s => s.country === country).map(s => s.city))];
+    citySel.innerHTML = `<option value="">Any city</option>` + cities.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  async function loadAllStays() {
+    const status = document.getElementById('resultsStatus');
+    try {
+      const res = await fetch(`${API_BASE_URL}/search/stays`);
+      if (!res.ok) throw new Error('bad response');
+      const data = await res.json();
+      allStays = data.results;
+      populateCities();
+      status.textContent = 'Connected to the Elite Orbits backend. Pick a city and search.';
+    } catch (err) {
+      allStays = FALLBACK_STAYS;
+      populateCities();
+      status.textContent = "Showing sample stays (backend may be waking up from sleep — try again shortly for live pricing).";
+    }
+  }
+
+  document.getElementById('country').addEventListener('change', populateCities);
+
+  function nightsFromDates() {
+    const ci = document.getElementById('checkin').value;
+    const co = document.getElementById('checkout').value;
+    if (ci && co) return eoDaysBetween(ci, co);
+    return null;
+  }
+
+  function renderResults(stays) {
+    const wrap = document.getElementById('resultsWrap');
+    if (!stays.length) {
+      wrap.innerHTML = `<p style="color:var(--ivory-dim);font-size:14px;">No stays found for that city yet.</p>`;
+      return;
+    }
+    const chosenNights = nightsFromDates();
+
+    wrap.innerHTML = stays.map(s => {
+      const nights = chosenNights || s.nights;
+      const perNightOur = s.ourPrice / s.nights;
+      const perNightStd = s.standardPrice / s.nights;
+      const totalOur = Math.round(perNightOur * nights);
+      const totalStd = Math.round(perNightStd * nights);
+      return `
+      <div class="result-card">
+        <div class="rc-main">
+          <div class="rc-route" style="font-size:18px;">${s.title} <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold-soft);border:1px solid var(--line-silver);border-radius:2px;padding:2px 8px;vertical-align:middle;">${s.type}</span></div>
+          <div class="rc-meta">${s.city} · ${nights} night${nights > 1 ? 's' : ''} · up to ${guests.guests} guests</div>
+        </div>
+        <div class="rc-price">
+          <span class="was">${eoFormatMoney(totalStd, s.currency)}</span>
+          <span class="now">${eoFormatMoney(totalOur, s.currency)}</span>
+          <span class="off">−${s.savingsPercent}% vs standard</span>
+          <button class="rc-book" data-id="${s.id}" data-price="${totalOur}" data-currency="${s.currency}" data-title="${s.title}" data-city="${s.city}" data-nights="${nights}">Book this stay</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('.rc-book').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        btn.textContent = 'Booking…';
+        await eoCreateBooking({
+          type: 'stay',
+          details: {
+            title: btn.dataset.title,
+            city: btn.dataset.city,
+            nights: Number(btn.dataset.nights),
+            checkin: document.getElementById('checkin').value || null,
+            checkout: document.getElementById('checkout').value || null,
+            guests: guests.guests,
+          },
+          price: Number(btn.dataset.price),
+          currency: btn.dataset.currency,
+        }, document.getElementById('bookingMsg'));
+        btn.disabled = false;
+        btn.textContent = 'Book this stay';
+      });
+    });
+  }
+
+  document.getElementById('staySearchForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const stayType = document.getElementById('stayType').value;
+    let matches = allStays.filter(s => s.country === country);
+    if (city) matches = matches.filter(s => s.city === city);
+    if (stayType) matches = matches.filter(s => s.type === stayType);
+    renderResults(matches);
+  });
+
+  loadAllStays();
+</script>
+
+</body>
+</html>
