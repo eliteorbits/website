@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Reviews — Elite Orbits</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:860px){.reviews-grid{grid-template-columns:1fr;}}
+  .reviews-summary{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:26px;
+    font-family:'IBM Plex Mono',monospace;color:var(--ivory-dim);font-size:13px;
+  }
+  .reviews-summary strong{font-family:'Fraunces',serif;font-weight:600;color:var(--gold-soft);font-size:20px;}
+  .reviews-status{text-align:center;color:var(--ivory-dim);font-family:'IBM Plex Mono',monospace;font-size:13px;padding:30px 0;}
+  .reviews-status .retry-btn{
+    display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+    padding:9px 20px;border:1px solid var(--line-silver);border-radius:2px;
+    color:var(--gold-soft);cursor:pointer;background:none;
+  }
+  .reviews-status .retry-btn:hover{border-color:var(--gold-soft);}
+  .load-more-row{text-align:center;margin-top:34px;}
+  #loadMoreBtn{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.03em;
+    padding:12px 28px;border:1px solid var(--line-silver);border-radius:2px;
+    color:var(--ivory-dim);cursor:pointer;transition:all .2s;background:none;
+  }
+  #loadMoreBtn:hover:not(:disabled){border-color:var(--gold-soft);color:var(--gold-soft);}
+  #loadMoreBtn:disabled{opacity:0.5;cursor:default;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="flights.html">Flights</a>
+      <a href="stays.html">Stays</a>
+      <a href="cars.html">Car Rentals</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" id="navAccountLink">Log In</a>
+      <a class="nav-cta" href="flights.html">Get 40% Off</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:20px;">
+  <div class="wrap auth-wrap">
+    <span class="crumb"><a href="index.html">Home</a> / Reviews</span>
+    <h1>What members say.</h1>
+    <p>Real reviews from real Elite Orbits members, across flights, stays, car rentals and general experience.</p>
+  </div>
+</section>
+
+<section style="padding-top:10px;">
+  <div class="wrap">
+
+    <div class="tabs" role="tablist" id="categoryTabs">
+      <button class="tab active" data-category="">All</button>
+      <button class="tab" data-category="flight">Flights</button>
+      <button class="tab" data-category="stay">Stays</button>
+      <button class="tab" data-category="car">Car Rentals</button>
+      <button class="tab" data-category="general">General</button>
+    </div>
+
+    <div class="reviews-summary" id="reviewsSummary"></div>
+
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <p class="reviews-status" id="reviewsStatus">Loading reviews…</p>
+
+    <div class="load-more-row">
+      <button id="loadMoreBtn" style="display:none;">Load more reviews</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band" id="book" style="margin-top:60px;">
+  <div class="wrap">
+    <h2>Your next domestic trip, booked for 40% less.</h2>
+    <p>Search flights, stays and car rentals in one place — the discount is already applied.</p>
+    <a href="flights.html" class="btn-primary">Start booking →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:14px;">
+        <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+        Elite Orbits
+      </div>
+      <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Book</h5>
+      <ul><li><a href="flights.html">Flights</a></li><li><a href="stays.html">Stays</a></li><li><a href="cars.html">Car Rentals</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="reviews.html">Reviews</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regions</h5>
+      <ul><li>India</li><li>United States</li><li>Canada</li></ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="cancellation-policy.html">Cancellation</a> · <a href="booking-policy.html">Booking</a> · <a href="cookie-policy.html">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  const PAGE_SIZE = 12;
+  const categoryLabel = { flight: 'Flight', stay: 'Stay', car: 'Car rental', general: 'General' };
+
+  const grid = document.getElementById('reviewsGrid');
+  const statusEl = document.getElementById('reviewsStatus');
+  const summaryEl = document.getElementById('reviewsSummary');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const tabs = document.querySelectorAll('#categoryTabs .tab');
+
+  let currentCategory = '';
+  let offset = 0;
+  let total = 0;
+  let loading = false;
+  let autoRetried = false;
+
+  function renderCards(reviews, append) {
+    const html = reviews.map(r => `
+      <div class="review-card">
+        <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+        <p class="review-quote">"${r.comment.replace(/</g, '&lt;')}"</p>
+        <div class="review-author">${r.author_name}<span>${categoryLabel[r.category] || r.category}</span></div>
+      </div>
+    `).join('');
+    grid.innerHTML = append ? grid.innerHTML + html : html;
+  }
+
+  async function loadReviews({ append = false } = {}) {
+    if (loading) return;
+    loading = true;
+    loadMoreBtn.disabled = true;
+    loadMoreBtn.textContent = 'Loading…';
+    if (!append) {
+      statusEl.style.display = 'block';
+      statusEl.textContent = 'Loading reviews…';
+      grid.innerHTML = '';
+    }
+
+    try {
+      const params = new URLSearchParams({ limit: PAGE_SIZE, offset });
+      if (currentCategory) params.set('category', currentCategory);
+      const res = await fetch(`${API_BASE_URL}/reviews?${params.toString()}`);
+      if (!res.ok) throw new Error('bad response');
+      const data = await res.json();
+
+      total = data.total;
+      offset += data.reviews.length;
+
+      if (!data.reviews.length && !append) {
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'No reviews in this category yet — be the first to write one.';
+        summaryEl.textContent = '';
+        loadMoreBtn.style.display = 'none';
+        return;
+      }
+
+      statusEl.style.display = 'none';
+      renderCards(data.reviews, append);
+      summaryEl.innerHTML = `<strong>${total}</strong> review${total === 1 ? '' : 's'}`;
+      loadMoreBtn.style.display = offset < total ? 'inline-block' : 'none';
+    } catch (err) {
+      loadMoreBtn.style.display = 'none';
+      statusEl.style.display = 'block';
+      if (!append) {
+        statusEl.innerHTML = "Backend may be waking up from sleep (free Render instances take ~50s after inactivity) — retrying automatically…";
+        if (!autoRetried) {
+          autoRetried = true;
+          loading = false;
+          setTimeout(() => loadReviews({ append: false }), 6000);
+          return;
+        }
+        statusEl.innerHTML = "Couldn't reach the backend right now. <span class=\"retry-btn\" id=\"retryLink\">Retry →</span>";
+        const retryLink = document.getElementById('retryLink');
+        if (retryLink) retryLink.addEventListener('click', () => { autoRetried = false; loadReviews({ append: false }); });
+      }
+    } finally {
+      loading = false;
+      loadMoreBtn.disabled = false;
+      loadMoreBtn.textContent = 'Load more reviews';
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCategory = tab.dataset.category;
+      offset = 0;
+      loadReviews({ append: false });
+    });
+  });
+
+  loadMoreBtn.addEventListener('click', () => loadReviews({ append: true }));
+
+  loadReviews({ append: false });
+</script>
+
+</body>
+</html>

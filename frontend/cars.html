@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Rentals — Elite Orbits</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="flights.html">Flights</a>
+      <a href="stays.html">Stays</a>
+      <a href="cars.html">Car Rentals</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" id="navAccountLink">Log In</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:40px;">
+  <div class="wrap">
+    <span class="crumb"><a href="index.html">Home</a> / Car Rentals</span>
+    <h1>Pick up a car right where you land.</h1>
+    <p>Transparent daily rates by airport — no separate site, no surprise counter fees. 40% off the standard rate, every category.</p>
+    <div class="partner-row">
+      <span class="partner-chip">Budget Rentals</span>
+      <span class="partner-chip">Enterprise</span>
+      <span class="partner-chip">Avis</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="search-panel">
+      <form id="carSearchForm">
+        <div class="search-grid">
+          <div class="form-row">
+            <label for="country">Country</label>
+            <select id="country">
+              <option value="india">India</option>
+              <option value="usa">United States</option>
+              <option value="canada">Canada</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="city">Pickup city / airport</label>
+            <select id="city"></select>
+          </div>
+          <div class="form-row">
+            <label for="pickup">Pickup date</label>
+            <input type="date" id="pickup">
+          </div>
+          <div class="form-row">
+            <label for="dropoff">Drop-off date</label>
+            <input type="date" id="dropoff">
+          </div>
+          <div class="form-row">
+            <label for="category">Car category</label>
+            <select id="category">
+              <option value="">Any category</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="Compact">Compact</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Coupe">Coupe</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="search-submit-row">
+          <button type="submit" class="btn-primary">Search Cars</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="results-status" id="resultsStatus"></p>
+    <div id="resultsWrap"></div>
+    <div class="booking-msg" id="bookingMsg"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-bottom" style="border-top:1px solid var(--line-silver);margin-top:40px;">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="cancellation-policy.html">Cancellation</a> · <a href="booking-policy.html">Booking</a> · <a href="cookie-policy.html">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="fallback-data.js"></script>
+<script src="app.js"></script>
+<script>
+  let allCars = [];
+
+  function populateCities() {
+    const country = document.getElementById('country').value;
+    const citySel = document.getElementById('city');
+    const cities = [...new Set(allCars.filter(c => c.country === country).map(c => `${c.city}|${c.airport}`))];
+    citySel.innerHTML = `<option value="">Any city</option>` + cities.map(entry => {
+      const [city, airport] = entry.split('|');
+      return `<option value="${city}">${city} (${airport})</option>`;
+    }).join('');
+  }
+
+  async function loadAllCars() {
+    const status = document.getElementById('resultsStatus');
+    try {
+      const res = await fetch(`${API_BASE_URL}/search/cars`);
+      if (!res.ok) throw new Error('bad response');
+      const data = await res.json();
+      allCars = data.results;
+      populateCities();
+      status.textContent = 'Connected to the Elite Orbits backend. Pick a city and search.';
+    } catch (err) {
+      allCars = FALLBACK_CARS;
+      populateCities();
+      status.textContent = "Showing sample cars (backend may be waking up from sleep — try again shortly for live pricing).";
+    }
+  }
+
+  document.getElementById('country').addEventListener('change', populateCities);
+
+  function daysFromDates() {
+    const p = document.getElementById('pickup').value;
+    const d = document.getElementById('dropoff').value;
+    if (p && d) return eoDaysBetween(p, d);
+    return 3; // sensible default for display
+  }
+
+  function renderResults(cars) {
+    const wrap = document.getElementById('resultsWrap');
+    if (!cars.length) {
+      wrap.innerHTML = `<p style="color:var(--ivory-dim);font-size:14px;">No cars found for that city yet.</p>`;
+      return;
+    }
+    const days = daysFromDates();
+
+    wrap.innerHTML = cars.map(c => {
+      const totalStd = Math.round(c.standardDailyRate * days);
+      const totalNow = Math.round(c.dailyRate * days);
+      return `
+      <div class="result-card">
+        <div class="rc-main">
+          <div class="rc-route" style="font-size:18px;">${c.category}</div>
+          <div class="rc-meta">${c.company} · Pickup at ${c.city} (${c.airport}) · ${days} day${days > 1 ? 's' : ''}</div>
+        </div>
+        <div class="rc-price">
+          <span class="was">${eoFormatMoney(totalStd, c.currency)}</span>
+          <span class="now">${eoFormatMoney(totalNow, c.currency)}</span>
+          <span class="off">−${c.discountPercent}% member rate</span>
+          <button class="rc-book" data-id="${c.id}" data-price="${totalNow}" data-currency="${c.currency}" data-category="${c.category}" data-company="${c.company}" data-city="${c.city}" data-days="${days}">Reserve this car</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('.rc-book').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        btn.textContent = 'Reserving…';
+        await eoCreateBooking({
+          type: 'car',
+          details: {
+            category: btn.dataset.category,
+            company: btn.dataset.company,
+            city: btn.dataset.city,
+            days: Number(btn.dataset.days),
+            pickup: document.getElementById('pickup').value || null,
+            dropoff: document.getElementById('dropoff').value || null,
+          },
+          price: Number(btn.dataset.price),
+          currency: btn.dataset.currency,
+        }, document.getElementById('bookingMsg'));
+        btn.disabled = false;
+        btn.textContent = 'Reserve this car';
+      });
+    });
+  }
+
+  document.getElementById('carSearchForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const category = document.getElementById('category').value;
+    let matches = allCars.filter(c => c.country === country);
+    if (city) matches = matches.filter(c => c.city === city);
+    if (category) matches = matches.filter(c => c.category === category);
+    renderResults(matches);
+  });
+
+  loadAllCars();
+</script>
+
+</body>
+</html>

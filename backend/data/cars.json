@@ -1,0 +1,19 @@
+[
+  { "id": "car_del_hatch", "country": "india", "city": "Delhi", "airport": "DEL", "category": "Hatchback", "company": "Budget Rentals", "standardDailyRate": 1400, "currency": "INR" },
+  { "id": "car_bom_suv", "country": "india", "city": "Mumbai", "airport": "BOM", "category": "SUV", "company": "Avis", "standardDailyRate": 2600, "currency": "INR" },
+  { "id": "car_blr_sedan", "country": "india", "city": "Bengaluru", "airport": "BLR", "category": "Sedan", "company": "Enterprise", "standardDailyRate": 1900, "currency": "INR" },
+  { "id": "car_goi_hatch", "country": "india", "city": "Goa", "airport": "GOI", "category": "Hatchback", "company": "Budget Rentals", "standardDailyRate": 1300, "currency": "INR" },
+  { "id": "car_hyd_suv", "country": "india", "city": "Hyderabad", "airport": "HYD", "category": "SUV", "company": "Avis", "currency": "INR", "standardDailyRate": 2400 },
+  { "id": "car_maa_sedan", "country": "india", "city": "Chennai", "airport": "MAA", "category": "Sedan", "company": "Enterprise", "standardDailyRate": 1850, "currency": "INR" },
+
+  { "id": "car_lax_sedan", "country": "usa", "city": "Los Angeles", "airport": "LAX", "category": "Sedan", "company": "Enterprise", "standardDailyRate": 58, "currency": "USD" },
+  { "id": "car_mia_coupe", "country": "usa", "city": "Miami", "airport": "MIA", "category": "Coupe", "company": "Avis", "standardDailyRate": 89, "currency": "USD" },
+  { "id": "car_ord_suv", "country": "usa", "city": "Chicago", "airport": "ORD", "category": "SUV", "company": "Budget Rentals", "standardDailyRate": 76, "currency": "USD" },
+  { "id": "car_jfk_compact", "country": "usa", "city": "New York", "airport": "JFK", "category": "Compact", "company": "Enterprise", "standardDailyRate": 64, "currency": "USD" },
+  { "id": "car_dfw_suv", "country": "usa", "city": "Dallas", "airport": "DFW", "category": "SUV", "company": "Avis", "standardDailyRate": 71, "currency": "USD" },
+
+  { "id": "car_yyz_suv", "country": "canada", "city": "Toronto", "airport": "YYZ", "category": "SUV", "company": "Avis", "standardDailyRate": 74, "currency": "CAD" },
+  { "id": "car_yvr_compact", "country": "canada", "city": "Vancouver", "airport": "YVR", "category": "Compact", "company": "Budget Rentals", "standardDailyRate": 52, "currency": "CAD" },
+  { "id": "car_yul_sedan", "country": "canada", "city": "Montreal", "airport": "YUL", "category": "Sedan", "company": "Enterprise", "standardDailyRate": 60, "currency": "CAD" },
+  { "id": "car_yyc_hatch", "country": "canada", "city": "Calgary", "airport": "YYC", "category": "Hatchback", "company": "Budget Rentals", "standardDailyRate": 49, "currency": "CAD" }
+]
