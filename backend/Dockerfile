@@ -7,9 +7,10 @@ RUN npm install --omit=dev
 
 COPY . .
 
-# Back4app (and most container platforms) inject the PORT env var at runtime.
-# server.js already reads process.env.PORT, so this just documents the default.
-ENV PORT=4000
-EXPOSE 4000
+# Render assigns its own PORT env var at runtime (typically 10000) and
+# server.js already reads process.env.PORT, so this is just the fallback
+# used for local development outside of Render.
+ENV PORT=10000
+EXPOSE 10000
 
 CMD ["npm", "start"]
