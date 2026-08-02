@@ -37,6 +37,11 @@ app.use(
 );
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(`[REQUEST] ${req.method} ${req.originalUrl} from ${req.ip}`);
+  next();
+});
+
 app.get('/', (req, res) => {
   res.json({ ok: true, service: 'elite-orbits-backend', message: 'API is running. See /api/health.' });
 });
