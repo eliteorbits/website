@@ -99,7 +99,7 @@ async function eoCreateBooking({ type, details, price, currency }, messageEl) {
 }
 
 // Populates the #footerSocial container (present in every page's footer) with
-// Facebook, Instagram, WhatsApp, and phone links from CONTACT_INFO above.
+// Facebook, Instagram, Email, WhatsApp, and phone icon-buttons from CONTACT_INFO above.
 function eoInitFooterSocial() {
   const el = document.getElementById('footerSocial');
   if (!el) return;
@@ -107,22 +107,55 @@ function eoInitFooterSocial() {
   const hasWhatsapp = CONTACT_INFO.whatsappLink && !CONTACT_INFO.whatsappLink.startsWith('REPLACE');
   const hasPhone = CONTACT_INFO.phoneHref && !CONTACT_INFO.phoneHref.startsWith('REPLACE');
 
-  const links = [
-    `<a href="${CONTACT_INFO.facebook}" target="_blank" rel="noopener">Facebook</a>`,
-    `<a href="${CONTACT_INFO.instagram}" target="_blank" rel="noopener">Instagram</a>`,
-    `<a href="mailto:${CONTACT_INFO.supportEmail}">${CONTACT_INFO.supportEmail}</a>`,
-    hasWhatsapp
-      ? `<a href="${CONTACT_INFO.whatsappLink}" target="_blank" rel="noopener">WhatsApp</a>`
-      : `<span title="Add your WhatsApp link in app.js (CONTACT_INFO)" style="opacity:0.5;cursor:not-allowed;">WhatsApp</span>`,
-    hasPhone
-      ? `<a href="tel:${CONTACT_INFO.phoneHref}">${CONTACT_INFO.phoneDisplay}</a>`
-      : `<span title="Add your phone number in app.js (CONTACT_INFO)" style="opacity:0.5;cursor:not-allowed;">Call Us</span>`,
-  ];
+  const ICONS = {
+    facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.87.24-1.46 1.49-1.46H16.5V4.35C16.24 4.31 15.35 4.24 14.32 4.24c-2.15 0-3.62 1.31-3.62 3.72V10.5H8.2v3h2.5V21h2.8z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.02 3C7.05 3 3.02 7.03 3.02 12c0 1.73.48 3.35 1.32 4.73L3 21l4.4-1.3a8.94 8.94 0 0 0 4.62 1.28h.01c4.97 0 9-4.03 9-9s-4.03-9-9.01-9zm0 16.4c-1.42 0-2.75-.42-3.86-1.14l-.28-.17-2.6.77.78-2.54-.18-.29a7.4 7.4 0 0 1-1.15-3.99c0-4.1 3.34-7.43 7.44-7.43 1.99 0 3.85.77 5.26 2.18a7.38 7.38 0 0 1 2.18 5.26c-.01 4.1-3.35 7.35-7.44 7.35zm4.08-5.57c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.73-.7.88-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.79-1.11-.66-.59-1.11-1.32-1.24-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.59.28-.2.22-.78.76-.78 1.85 0 1.09.8 2.14.91 2.29.11.15 1.58 2.41 3.83 3.38.54.23.96.37 1.29.47.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.09-.2-.15-.42-.26z"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8c1.2 2.4 3.2 4.4 5.6 5.6l1.9-1.9c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V19c0 .6-.4 1-1 1C10.9 20 4 13.1 4 4.6c0-.6.4-1 1-1h3.1c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1.1L6.6 10.8z"/></svg>',
+  };
 
-  el.innerHTML = links.join('');
+  const items = [
+    { key: 'facebook', href: CONTACT_INFO.facebook, label: 'Facebook' },
+    { key: 'instagram', href: CONTACT_INFO.instagram, label: 'Instagram' },
+    { key: 'mail', href: `mailto:${CONTACT_INFO.supportEmail}`, label: CONTACT_INFO.supportEmail },
+    hasWhatsapp
+      ? { key: 'whatsapp', href: CONTACT_INFO.whatsappLink, label: 'WhatsApp' }
+      : null,
+    hasPhone
+      ? { key: 'phone', href: `tel:${CONTACT_INFO.phoneHref}`, label: CONTACT_INFO.phoneDisplay }
+      : null,
+  ].filter(Boolean);
+
+  el.innerHTML = items
+    .map(
+      (item) => `
+        <a href="${item.href}" class="social-icon-btn" target="_blank" rel="noopener" title="${item.label}" aria-label="${item.label}">
+          ${ICONS[item.key]}
+        </a>`
+    )
+    .join('');
+}
+
+// Adds a floating WhatsApp chat button (bottom-right, all pages) if a
+// WhatsApp link is configured in CONTACT_INFO.
+function eoInitWhatsAppFloat() {
+  if (!CONTACT_INFO.whatsappLink || CONTACT_INFO.whatsappLink.startsWith('REPLACE')) return;
+  if (document.getElementById('eoWhatsAppFloat')) return;
+
+  const a = document.createElement('a');
+  a.id = 'eoWhatsAppFloat';
+  a.href = CONTACT_INFO.whatsappLink;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Chat on WhatsApp');
+  a.title = 'Chat on WhatsApp';
+  a.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.02 3C7.05 3 3.02 7.03 3.02 12c0 1.73.48 3.35 1.32 4.73L3 21l4.4-1.3a8.94 8.94 0 0 0 4.62 1.28h.01c4.97 0 9-4.03 9-9s-4.03-9-9.01-9zm0 16.4c-1.42 0-2.75-.42-3.86-1.14l-.28-.17-2.6.77.78-2.54-.18-.29a7.4 7.4 0 0 1-1.15-3.99c0-4.1 3.34-7.43 7.44-7.43 1.99 0 3.85.77 5.26 2.18a7.38 7.38 0 0 1 2.18 5.26c-.01 4.1-3.35 7.35-7.44 7.35zm4.08-5.57c-.22-.11-1.32-.65-1.53-.73-.2-.08-.35-.11-.5.11-.15.22-.57.73-.7.88-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.79-1.11-.66-.59-1.11-1.32-1.24-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.59.28-.2.22-.78.76-.78 1.85 0 1.09.8 2.14.91 2.29.11.15 1.58 2.41 3.83 3.38.54.23.96.37 1.29.47.54.17 1.03.15 1.42.09.43-.06 1.32-.54 1.51-1.06.19-.52.19-.96.13-1.06-.06-.09-.2-.15-.42-.26z"/></svg>`;
+  document.body.appendChild(a);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   eoInitNav();
   eoInitFooterSocial();
+  eoInitWhatsAppFloat();
 });
