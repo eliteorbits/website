@@ -1,5 +1,5 @@
 // Shared helpers for the Elite Orbits frontend.
-const API_BASE_URL = 'https://website-uzil.onrender.com/api';
+const API_BASE_URL = 'website-production-92e6.up.railway.app';
 const CURRENCY_SYMBOL = { INR: '₹', USD: '$', CAD: 'C$' };
 
 // Update these once here — every page's footer pulls from this single place.
