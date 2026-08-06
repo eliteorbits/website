@@ -39,11 +39,16 @@
 
 <header>
   <nav>
-    <div class="logo">
+    <a class="logo" href="index.html">
       <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
       Elite Orbits
+    </a>
+    <div class="nav-mobile-actions">
+      <a href="login.html" class="nav-login-mobile" aria-label="Log In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-4 4-6 7.5-6s6.1 2 7.5 6"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="flights.html">Flights</a>
       <a href="stays.html">Stays</a>
@@ -100,10 +105,10 @@
   <div class="wrap footer-social" id="footerSocial"></div>
   <div class="wrap footer-grid">
     <div class="footer-col">
-      <div class="logo" style="margin-bottom:14px;">
+      <a class="logo" href="index.html" style="margin-bottom:14px;">
         <span class="logo-mark"><img src="assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
         Elite Orbits
-      </div>
+      </a>
       <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
     </div>
     <div class="footer-col">

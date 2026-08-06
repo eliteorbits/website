@@ -58,11 +58,20 @@
   .logo{
     display:flex;align-items:center;gap:10px;
     font-family:'Fraunces',serif;font-size:20px;font-weight:600;letter-spacing:0.01em;
+    color:inherit;text-decoration:none;
   }
   .logo-mark{
     width:26px;height:26px;position:relative;
   }
   .logo-mark svg{width:100%;height:100%;}
+  .nav-mobile-actions{display:flex;align-items:center;gap:14px;}
+  .nav-login-mobile{
+    display:none;align-items:center;justify-content:center;
+    width:36px;height:36px;border:1px solid var(--line-silver);border-radius:8px;
+    color:var(--ivory-dim);
+  }
+  .nav-login-mobile svg{width:18px;height:18px;}
+  .nav-login-mobile:hover{border-color:var(--gold-soft);color:var(--gold-soft);}
   .nav-links{display:flex;gap:34px;align-items:center;}
   .nav-links a{font-size:14px;font-weight:600;color:var(--ivory-dim);transition:color .2s;}
   .nav-links a:hover{color:var(--gold-soft);}
@@ -88,6 +97,7 @@
     .nav-links.open{max-height:320px;}
     .nav-links a{width:100%;padding:16px 32px;border-bottom:1px solid var(--line-silver);}
     .nav-toggle{display:block;}
+    .nav-login-mobile{display:flex;}
   }
 
   /* ---------- hero ---------- */
