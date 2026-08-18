@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XS376425K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6XS376425K');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Elite Orbits</title>
+<link rel="icon" type="image/png" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<meta name="description" content="Get in touch with Elite Orbits for booking support, questions, or feedback via email, phone, or WhatsApp.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eliteorbits.com/contact/">
+<meta property="og:site_name" content="Elite Orbits">
+<meta property="og:title" content="Contact Us — Elite Orbits">
+<meta property="og:description" content="Get in touch with Elite Orbits for booking support, questions, or feedback via email, phone, or WhatsApp.">
+<meta property="og:url" content="https://eliteorbits.com/contact/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/logo-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us — Elite Orbits">
+<meta name="twitter:description" content="Get in touch with Elite Orbits for booking support, questions, or feedback via email, phone, or WhatsApp.">
+<meta name="author" content="Elite Orbits">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/">
+      <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </a>
+    <div class="nav-mobile-actions">
+      <a href="/login/" class="nav-login-mobile" aria-label="Log In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-4 4-6 7.5-6s6.1 2 7.5 6"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/flights/">Flights</a>
+      <a href="/stays/">Stays</a>
+      <a href="/cars/">Car Rentals</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+      <a class="nav-cta" href="/flights/">Get 40% Off</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="crumb"><a href="/">Home</a> / Contact</span>
+    <h1>Talk to us before you book.</h1>
+    <p>Questions about a route, a stay, or a rental car — reach the Elite Orbits team directly.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Reach us</span>
+      <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3vw,30px);margin-top:12px;">Support details</h2>
+
+      <div style="margin-top:24px;">
+        <div class="contact-info-item">
+          <div class="ci-icon">@</div>
+          <div>
+            <h5>Email</h5>
+            <p>Support: support@eliteorbits.com<br>Team: team@eliteorbits.com<br>Admin/business: admin@eliteorbits.com</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">☎</div>
+          <div><h5>Phone</h5><p>USA/Canada: +1 (905) 330-2036<br>India: coming soon</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">◷</div>
+          <div><h5>Hours</h5><p>Mon–Sat, 9am–8pm local time</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">⚑</div>
+          <div><h5>Regions served</h5><p>India · United States · Canada</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <form id="contactForm">
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="name">Full name</label>
+            <input type="text" id="name" required placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="topic">What's this about?</label>
+          <select id="topic">
+            <option>A flight booking</option>
+            <option>A stay booking</option>
+            <option>A car rental</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required placeholder="Tell us what you need help with"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Send message →</button>
+        <div class="form-success" id="formSuccess">Thanks — your message has been noted. Our team will get back to you shortly.</div>
+        <p class="form-note">This connects to the live Elite Orbits backend. If it has been idle a few minutes, the first request can take up to a minute to wake it back up.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <a class="logo" href="/" style="margin-bottom:14px;">
+        <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+        Elite Orbits
+      </a>
+      <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Book</h5>
+      <ul><li><a href="/flights/">Flights</a></li><li><a href="/stays/">Stays</a></li><li><a href="/cars/">Car Rentals</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li><li><a href="/reviews/">Reviews</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regions</h5>
+      <ul><li>India</li><li>United States</li><li>Canada</li></ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/cancellation-policy/">Cancellation</a> · <a href="/booking-policy/">Booking</a> · <a href="/cookie-policy/">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      topic: document.getElementById('topic').value,
+      message: document.getElementById('message').value,
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      success.textContent = 'Thanks — your message has been noted. Our team will get back to you shortly.';
+      success.classList.add('show');
+      form.reset();
+    } catch (err) {
+      success.textContent = `Couldn't send your message: ${err.message}. Make sure the backend server is running.`;
+      success.style.borderColor = '#C97B63';
+      success.style.color = '#C97B63';
+      success.style.background = 'rgba(201,123,99,0.12)';
+      success.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message →';
+    }
+  });
+</script>
+
+</body>
+</html>
