@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XS376425K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6XS376425K');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write a Review — Elite Orbits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .star-picker{display:flex;gap:8px;margin-top:6px;}
+  .star-picker button{background:none;border:none;font-size:28px;color:var(--line-silver);cursor:pointer;padding:0;line-height:1;}
+  .star-picker button.filled{color:var(--gold-soft);}
+  .login-notice{background:var(--bg-panel);border:1px solid var(--line-silver);border-radius:4px;padding:24px;text-align:center;}
+  .login-notice p{color:var(--ivory-dim);font-size:14px;margin-bottom:16px;}
+</style>
+<meta name="description" content="Share your experience booking flights, stays, or car rentals with Elite Orbits.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eliteorbits.com/write-review/">
+<meta property="og:site_name" content="Elite Orbits">
+<meta property="og:title" content="Write a Review — Elite Orbits">
+<meta property="og:description" content="Share your experience booking flights, stays, or car rentals with Elite Orbits.">
+<meta property="og:url" content="https://eliteorbits.com/write-review/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/logo-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Write a Review — Elite Orbits">
+<meta name="twitter:description" content="Share your experience booking flights, stays, or car rentals with Elite Orbits.">
+<meta name="author" content="Elite Orbits">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/">
+      <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </a>
+    <div class="nav-mobile-actions">
+      <a href="/login/" class="nav-login-mobile" aria-label="Log In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-4 4-6 7.5-6s6.1 2 7.5 6"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/flights/">Flights</a>
+      <a href="/stays/">Stays</a>
+      <a href="/cars/">Car Rentals</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+      <a href="/login/" id="navAccountLink">Log In</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:40px;">
+  <div class="wrap auth-wrap">
+    <span class="crumb"><a href="/">Home</a> / Write a Review</span>
+    <h1>Share your experience.</h1>
+    <p>Real reviews from real Elite Orbits members. Your review is checked before it appears on the site.</p>
+  </div>
+</section>
+
+<section style="padding-top:12px;">
+  <div class="wrap auth-wrap">
+
+    <div id="loggedOutNotice" class="login-notice" style="display:none;">
+      <p>You need to be logged in to write a review — this keeps reviews tied to real bookings, not anonymous posts.</p>
+      <a href="/login/?next=/write-review/" class="btn-primary">Log in to continue</a>
+    </div>
+
+    <form id="reviewForm" class="auth-panel" style="display:none;">
+      <div class="auth-error" id="reviewError"></div>
+      <div class="booking-msg" id="reviewSuccess"></div>
+
+      <div class="form-row">
+        <label>Your rating</label>
+        <div class="star-picker" id="starPicker">
+          <button type="button" data-val="1">★</button>
+          <button type="button" data-val="2">★</button>
+          <button type="button" data-val="3">★</button>
+          <button type="button" data-val="4">★</button>
+          <button type="button" data-val="5">★</button>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="category">What was this about?</label>
+        <select id="category">
+          <option value="flight">A flight booking</option>
+          <option value="stay">A stay</option>
+          <option value="car">A car rental</option>
+          <option value="general">General experience</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="comment">Your review</label>
+        <textarea id="comment" rows="5" required maxlength="600" placeholder="Tell other travelers about your experience"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Submit review →</button>
+      <p class="form-note">Reviews are checked before they go live, so it may not appear immediately.</p>
+    </form>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <a class="logo" href="/" style="margin-bottom:14px;">
+        <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+        Elite Orbits
+      </a>
+      <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Book</h5>
+      <ul><li><a href="/flights/">Flights</a></li><li><a href="/stays/">Stays</a></li><li><a href="/cars/">Car Rentals</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li><li><a href="/reviews/">Reviews</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regions</h5>
+      <ul><li>India</li><li>United States</li><li>Canada</li></ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/cancellation-policy/">Cancellation</a> · <a href="/booking-policy/">Booking</a> · <a href="/cookie-policy/">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+<script>
+  const loggedOutNotice = document.getElementById('loggedOutNotice');
+  const form = document.getElementById('reviewForm');
+  const errorBox = document.getElementById('reviewError');
+  const successBox = document.getElementById('reviewSuccess');
+
+  if (!eoGetToken()) {
+    loggedOutNotice.style.display = 'block';
+  } else {
+    form.style.display = 'block';
+  }
+
+  let selectedRating = 0;
+  const starButtons = document.querySelectorAll('#starPicker button');
+  starButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedRating = Number(btn.dataset.val);
+      starButtons.forEach(b => b.classList.toggle('filled', Number(b.dataset.val) <= selectedRating));
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+    successBox.classList.remove('show');
+
+    if (selectedRating < 1) {
+      errorBox.textContent = 'Please select a star rating.';
+      errorBox.classList.add('show');
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/reviews`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...eoAuthHeaders() },
+        body: JSON.stringify({
+          category: document.getElementById('category').value,
+          rating: selectedRating,
+          comment: document.getElementById('comment').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Could not submit review.');
+
+      successBox.textContent = data.note || 'Thanks — your review has been submitted for approval.';
+      successBox.classList.add('show');
+      form.reset();
+      selectedRating = 0;
+      starButtons.forEach(b => b.classList.remove('filled'));
+    } catch (err) {
+      errorBox.textContent = err.message.includes('fetch')
+        ? "Couldn't reach the backend. Make sure the server is running."
+        : err.message;
+      errorBox.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit review →';
+    }
+  });
+</script>
+
+</body>
+</html>

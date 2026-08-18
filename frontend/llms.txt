@@ -1,0 +1,35 @@
+# Elite Orbits
+
+> Elite Orbits is a travel booking platform where customers search and
+> compare flights, hotel/villa stays, and self-drive or chauffeur car
+> rentals, see transparent pricing, and confirm their booking directly
+> with the team over WhatsApp.
+
+## What Elite Orbits offers
+- Flight search and booking across routes with transparent, all-in pricing.
+- Hotel and stay bookings (hotels, villas, resorts) with per-night pricing.
+- Self-drive and chauffeur car rentals by the day.
+- Every booking is confirmed by chatting with the Elite Orbits team on WhatsApp.
+
+## Key pages
+- Home: https://eliteorbits.com/
+- Flights: https://eliteorbits.com/flights/
+- Stays: https://eliteorbits.com/stays/
+- Car rentals: https://eliteorbits.com/cars/
+- About: https://eliteorbits.com/about/
+- Reviews: https://eliteorbits.com/reviews/
+- FAQ: https://eliteorbits.com/faq/
+- Contact: https://eliteorbits.com/contact/
+- Booking policy: https://eliteorbits.com/booking-policy/
+- Cancellation policy: https://eliteorbits.com/cancellation-policy/
+
+## How booking works
+1. Customer browses flights, stays, or cars and sees the live price.
+2. Customer clicks "Book Now" (requires a free account).
+3. The booking is saved, and WhatsApp opens with the booking reference
+   and details pre-filled so the customer can confirm with the Elite
+   Orbits team directly.
+
+## Contact
+- Support email: support@eliteorbits.com
+- WhatsApp and phone: available on the Contact page.

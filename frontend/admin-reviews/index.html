@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XS376425K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6XS376425K');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Reviews</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .admin-review-card{background:var(--bg-panel);border:1px solid var(--line-silver);border-radius:4px;padding:20px;margin-bottom:14px;}
+  .admin-review-meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ivory-dim);margin-bottom:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .admin-status{padding:2px 8px;border-radius:2px;font-weight:600;}
+  .admin-status.pending{background:rgba(201,162,39,0.15);color:var(--gold-soft);}
+  .admin-status.approved{background:rgba(127,169,142,0.15);color:var(--success);}
+  .admin-status.rejected{background:rgba(201,123,99,0.15);color:#C97B63;}
+  .admin-actions{margin-top:14px;display:flex;gap:10px;}
+  .admin-actions button{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 16px;border-radius:2px;
+    border:1px solid var(--line-silver);background:none;color:var(--ivory-dim);cursor:pointer;
+  }
+  .admin-actions button:hover{border-color:var(--gold-soft);color:var(--gold-soft);}
+  .admin-actions button.danger:hover{border-color:#C97B63;color:#C97B63;}
+</style>
+<meta name="description" content="Internal admin dashboard.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eliteorbits.com/admin-reviews/">
+<meta property="og:site_name" content="Elite Orbits">
+<meta property="og:title" content="Admin — Reviews">
+<meta property="og:description" content="Internal admin dashboard.">
+<meta property="og:url" content="https://eliteorbits.com/admin-reviews/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/logo-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Admin — Reviews">
+<meta name="twitter:description" content="Internal admin dashboard.">
+<meta name="author" content="Elite Orbits">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </div>
+    <div class="nav-links" style="max-height:none;position:static;background:none;border:none;">
+      <a href="/">Back to site</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:32px;">
+  <div class="wrap">
+    <h1>Review moderation</h1>
+    <p>Private page — approve or reject reviews submitted by customers before they appear on the site.</p>
+  </div>
+</section>
+
+<section style="padding-top:12px;">
+  <div class="wrap" style="max-width:760px;">
+
+    <div class="search-panel" style="margin-bottom:28px;">
+      <div class="form-row">
+        <label for="adminKey">Admin key</label>
+        <input type="password" id="adminKey" placeholder="Paste your ADMIN_KEY from the backend .env">
+      </div>
+      <button id="loadBtn" class="btn-primary" style="margin-top:10px;">Load reviews</button>
+      <p class="form-note">This key is set in <code>backend/.env</code> as <code>ADMIN_KEY</code>. It's only used in this browser tab, never saved.</p>
+    </div>
+
+    <p class="results-status" id="status"></p>
+    <div id="reviewList"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-bottom" style="border-top:1px solid var(--line-silver);margin-top:40px;">
+    <span>© 2026 Elite Orbits — internal page</span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+<script>
+  let adminKey = '';
+
+  function statusBadge(s) {
+    return `<span class="admin-status ${s}">${s}</span>`;
+  }
+
+  async function loadReviews() {
+    adminKey = document.getElementById('adminKey').value.trim();
+    const status = document.getElementById('status');
+    const list = document.getElementById('reviewList');
+    if (!adminKey) {
+      status.textContent = 'Enter your admin key first.';
+      return;
+    }
+    status.textContent = 'Loading…';
+    try {
+      const res = await fetch(`${API_BASE_URL}/reviews/admin/all`, {
+        headers: { 'X-Admin-Key': adminKey },
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Could not load reviews.');
+
+      if (!data.reviews.length) {
+        list.innerHTML = '';
+        status.textContent = 'No reviews submitted yet.';
+        return;
+      }
+
+      status.textContent = `${data.count} review(s) total.`;
+      list.innerHTML = data.reviews.map(r => `
+        <div class="admin-review-card" data-id="${r.id}">
+          <div class="admin-review-meta">
+            <span>${r.author_name} · ${r.category} · ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+            <span>${statusBadge(r.status)}</span>
+          </div>
+          <p style="color:var(--ivory-dim);font-size:14px;line-height:1.6;">${r.comment.replace(/</g, '&lt;')}</p>
+          <div class="admin-actions">
+            <button data-action="approved">Approve</button>
+            <button data-action="rejected" class="danger">Reject</button>
+          </div>
+        </div>
+      `).join('');
+
+      list.querySelectorAll('.admin-review-card').forEach(card => {
+        const id = card.dataset.id;
+        card.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            btn.disabled = true;
+            try {
+              const res = await fetch(`${API_BASE_URL}/reviews/admin/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json', 'X-Admin-Key': adminKey },
+                body: JSON.stringify({ status: btn.dataset.action }),
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.error);
+              loadReviews();
+            } catch (err) {
+              alert('Failed: ' + err.message);
+              btn.disabled = false;
+            }
+          });
+        });
+      });
+    } catch (err) {
+      status.textContent = err.message.includes('fetch')
+        ? "Couldn't reach the backend. Make sure the server is running."
+        : err.message;
+    }
+  }
+
+  document.getElementById('loadBtn').addEventListener('click', loadReviews);
+</script>
+
+</body>
+</html>
