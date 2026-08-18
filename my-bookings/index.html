@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XS376425K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6XS376425K');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bookings — Elite Orbits</title>
+<link rel="icon" type="image/png" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .booking-card{
+    background:var(--bg-panel);border:1px solid var(--line-silver);border-radius:4px;
+    padding:20px 22px;margin-bottom:14px;
+  }
+  .booking-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+  .booking-type{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--gold-soft);
+  }
+  .booking-ref{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ivory-dim);}
+  .booking-summary{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-bottom:6px;}
+  .booking-meta{font-size:13.5px;color:var(--ivory-dim);display:flex;gap:18px;flex-wrap:wrap;}
+  .booking-price{font-family:'IBM Plex Mono',monospace;color:var(--gold-soft);font-weight:600;}
+  .booking-status{
+    padding:2px 10px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    background:rgba(127,169,142,0.15);color:var(--success);text-transform:capitalize;
+  }
+  .bookings-status{text-align:center;color:var(--ivory-dim);font-family:'IBM Plex Mono',monospace;font-size:13px;padding:40px 0;}
+</style>
+<meta name="description" content="View and manage your flight, stay, and car rental bookings.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eliteorbits.com/my-bookings/">
+<meta property="og:site_name" content="Elite Orbits">
+<meta property="og:title" content="My Bookings — Elite Orbits">
+<meta property="og:description" content="View and manage your flight, stay, and car rental bookings.">
+<meta property="og:url" content="https://eliteorbits.com/my-bookings/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/logo-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Bookings — Elite Orbits">
+<meta name="twitter:description" content="View and manage your flight, stay, and car rental bookings.">
+<meta name="author" content="Elite Orbits">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/">
+      <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </a>
+    <div class="nav-mobile-actions">
+      <a href="/login/" class="nav-login-mobile" aria-label="Log In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-4 4-6 7.5-6s6.1 2 7.5 6"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/flights/">Flights</a>
+      <a href="/stays/">Stays</a>
+      <a href="/cars/">Car Rentals</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+      <a href="/login/" id="navAccountLink">Log In</a>
+      <a class="nav-cta" href="/flights/">Get 40% Off</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:20px;">
+  <div class="wrap auth-wrap">
+    <span class="crumb"><a href="/">Home</a> / My Bookings</span>
+    <h1>My bookings.</h1>
+    <p>Every flight, stay and car rental you've booked with Elite Orbits.</p>
+  </div>
+</section>
+
+<section style="padding-top:10px;">
+  <div class="wrap" style="max-width:760px;">
+    <div id="bookingsList"></div>
+    <p class="bookings-status" id="bookingsStatus">Loading your bookings…</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <a class="logo" href="/" style="margin-bottom:14px;">
+        <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+        Elite Orbits
+      </a>
+      <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Book</h5>
+      <ul><li><a href="/flights/">Flights</a></li><li><a href="/stays/">Stays</a></li><li><a href="/cars/">Car Rentals</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li><li><a href="/reviews/">Reviews</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regions</h5>
+      <ul><li>India</li><li>United States</li><li>Canada</li></ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/cancellation-policy/">Cancellation</a> · <a href="/booking-policy/">Booking</a> · <a href="/cookie-policy/">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+<script>
+  const TYPE_LABEL = { flight: 'Flight', stay: 'Stay', car: 'Car Rental' };
+  const CURRENCY_SYMBOL2 = { INR: '₹', USD: '$', CAD: 'C$' };
+
+  function summarize(b) {
+    const d = b.details || {};
+    if (b.type === 'flight') return `${d.from || '?'} → ${d.to || '?'}${d.airline ? ' · ' + d.airline : ''}`;
+    if (b.type === 'stay') return `${d.name || d.city || 'Stay'}${d.city && d.name ? ' · ' + d.city : ''}`;
+    if (b.type === 'car') return `${d.category || 'Car'}${d.city ? ' · ' + d.city : ''}`;
+    return TYPE_LABEL[b.type] || b.type;
+  }
+
+  async function loadBookings() {
+    const status = document.getElementById('bookingsStatus');
+    const list = document.getElementById('bookingsList');
+
+    if (!eoGetToken()) {
+      window.location.href = `/login/?next=${encodeURIComponent('/my-bookings/')}`;
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/bookings`, { headers: { ...eoAuthHeaders() } });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Could not load your bookings.');
+
+      if (!data.bookings.length) {
+        status.textContent = "You haven't booked anything yet — your bookings will show up here.";
+        return;
+      }
+
+      status.style.display = 'none';
+      list.innerHTML = data.bookings.map(b => `
+        <div class="booking-card">
+          <div class="booking-top">
+            <span class="booking-type">${TYPE_LABEL[b.type] || b.type}</span>
+            <span class="booking-status">${b.status || 'confirmed'}</span>
+          </div>
+          <div class="booking-summary">${summarize(b)}</div>
+          <div class="booking-meta">
+            <span>Ref: ${b.reference}</span>
+            <span class="booking-price">${CURRENCY_SYMBOL2[b.currency] || ''}${b.price}</span>
+            <span>${new Date(b.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      status.textContent = err.message.includes('fetch')
+        ? "Couldn't reach the backend. It may be waking up from sleep — try again in a moment."
+        : err.message;
+    }
+  }
+
+  loadBookings();
+</script>
+
+</body>
+</html>
