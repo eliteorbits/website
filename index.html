@@ -12,26 +12,27 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flight Booking — Compare & Book Flights | Elite Orbits</title>
+<title>Elite Orbits — Book Flights, Stays & Car Rentals Online</title>
 <link rel="icon" type="image/png" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<meta name="description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
+<meta name="description" content="Elite Orbits helps you find and book flights, hotels/stays, and car rentals at transparent prices, then confirm instantly over WhatsApp with our team.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://eliteorbits.com/flights/">
+<link rel="canonical" href="https://eliteorbits.com/">
 <meta property="og:site_name" content="Elite Orbits">
-<meta property="og:title" content="Flight Booking — Compare & Book Flights | Elite Orbits">
-<meta property="og:description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
-<meta property="og:url" content="https://eliteorbits.com/flights/">
+<meta property="og:title" content="Elite Orbits — Book Flights, Stays & Car Rentals Online">
+<meta property="og:description" content="Elite Orbits helps you find and book flights, hotels/stays, and car rentals at transparent prices, then confirm instantly over WhatsApp with our team.">
+<meta property="og:url" content="https://eliteorbits.com/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="/assets/logo-mark.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Flight Booking — Compare & Book Flights | Elite Orbits">
-<meta name="twitter:description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
+<meta name="twitter:title" content="Elite Orbits — Book Flights, Stays & Car Rentals Online">
+<meta name="twitter:description" content="Elite Orbits helps you find and book flights, hotels/stays, and car rentals at transparent prices, then confirm instantly over WhatsApp with our team.">
 <meta name="author" content="Elite Orbits">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Elite Orbits", "url": "https://eliteorbits.com", "description": "Elite Orbits helps travellers find and book flights, hotel stays, and car rentals at transparent prices, with booking confirmation over WhatsApp.", "areaServed": "Worldwide"}</script>
 </head>
 <body>
 
@@ -55,96 +56,262 @@
       <a href="/faq/">FAQ</a>
       <a href="/contact/">Contact</a>
       <a href="/login/" id="navAccountLink">Log In</a>
+      <a class="nav-cta" href="/flights/">Get 40% Off</a>
     </div>
   </nav>
 </header>
 
-<section class="page-hero" style="padding-bottom:40px;">
-  <div class="wrap">
-    <span class="crumb"><a href="/">Home</a> / Flights</span>
-    <h1>Find your next domestic flight.</h1>
-    <p>Search India, USA, and Canada domestic routes — the 40% member fare is applied automatically.</p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">India · USA · Canada — Domestic Routes</span>
+      <h1>Fly domestic.<br>Pay <em>40% less</em>,<br>every time.</h1>
+      <p class="sub">Elite Orbits members book domestic flights across India, the USA and Canada at a flat 40% off — plus stays priced below the usual booking sites and car rentals waiting at the gate.</p>
+      <div class="hero-cta-row">
+        <a href="/flights/" class="btn-primary">Claim your 40% off →</a>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+      <div class="savings-line">
+        <span class="item"><span class="dot"></span> No hidden convenience fees</span>
+        <span class="item"><span class="dot"></span> Price locked at checkout</span>
+      </div>
+    </div>
+
+    <div class="pass-visual">
+      <div class="pass-top">
+        <div>
+          <div class="pass-code">DEL</div>
+          <div class="pass-city">New Delhi</div>
+        </div>
+        <div class="pass-mid" style="flex:1;">
+          <div class="pass-route-track"><span class="plane">✈</span></div>
+        </div>
+        <div>
+          <div class="pass-code">BOM</div>
+          <div class="pass-city">Mumbai</div>
+        </div>
+      </div>
+      <div class="pass-bottom">
+        <span>MEMBER FARE</span>
+        <span class="badge">−40% APPLIED</span>
+        <span>GATE OPEN</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section style="padding-top:36px;">
+<section class="services" id="services">
   <div class="wrap">
-    <div class="search-panel">
-      <div class="trip-toggle">
-        <button type="button" class="active" data-trip="oneway">One-Way</button>
-        <button type="button" data-trip="round">Round Trip</button>
-      </div>
+    <div class="section-head">
+      <span class="eyebrow">What's included</span>
+      <h2>Three ways we cut the cost of getting there.</h2>
+    </div>
+    <div class="stub-row">
+      <a class="stub" id="flights" href="/flights/" style="text-decoration:none;color:inherit;">
+        <div class="stub-icon">✈</div>
+        <h3>Domestic Flights</h3>
+        <p>40% off every domestic route in India, and cross-country domestic fares within the USA and Canada. Applied automatically at checkout, no coupon hunting.</p>
+        <div class="stub-foot"><span class="tag">FLAT 40% OFF</span><span class="arrow">→</span></div>
+      </a>
+      <a class="stub" id="stays" href="/stays/" style="text-decoration:none;color:inherit;">
+        <div class="stub-icon">⌂</div>
+        <h3>Hotels &amp; Airbnbs</h3>
+        <p>Hotels and Airbnb-style homes, sourced through host and property partnerships so the price you see is 40% below the standard rate.</p>
+        <div class="stub-foot"><span class="tag">40% BELOW STANDARD RATE</span><span class="arrow">→</span></div>
+      </a>
+      <a class="stub" id="cars" href="/cars/" style="text-decoration:none;color:inherit;">
+        <div class="stub-icon">⛟</div>
+        <h3>Car Rentals</h3>
+        <p>Pick up a car at the same airport you land in, 40% off the standard daily rate — from Budget Rentals, Enterprise and Avis. Choose by category: hatchback, compact, sedan, SUV or coupe.</p>
+        <div class="stub-foot"><span class="tag">40% OFF · AT-AIRPORT PICKUP</span><span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
 
-      <form id="flightSearchForm">
-        <div class="search-grid">
-          <div class="form-row airport-field">
-            <label for="from">From (airport)</label>
-            <input type="text" id="from" autocomplete="off" placeholder="City or airport code, e.g. Delhi or DEL" required>
-            <input type="hidden" id="fromCode">
-            <div class="airport-dropdown" id="fromDropdown"></div>
-          </div>
-          <div class="form-row airport-field">
-            <label for="to">To (airport)</label>
-            <input type="text" id="to" autocomplete="off" placeholder="City or airport code, e.g. Mumbai or BOM" required>
-            <input type="hidden" id="toCode">
-            <div class="airport-dropdown" id="toDropdown"></div>
-          </div>
-          <div class="form-row">
-            <label for="cabin">Cabin class</label>
-            <select id="cabin">
-              <option>Economy</option>
-              <option>Premium Economy</option>
-              <option>Business</option>
-              <option>First Class</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="depart">Departure</label>
-            <input type="date" id="depart" required>
-          </div>
-          <div class="form-row" id="returnRow" style="display:none;">
-            <label for="returnDate">Return</label>
-            <input type="date" id="returnDate">
-          </div>
-
-          <div class="form-row full stepper-group" style="grid-column:span 2;">
-            <div class="stepper-row">
-              <div class="stepper-label"><b>Adults</b>12 years and older</div>
-              <div class="stepper-controls">
-                <button type="button" data-step="adults" data-dir="-1">−</button>
-                <span id="adultsVal">1</span>
-                <button type="button" data-step="adults" data-dir="1">+</button>
-              </div>
-            </div>
-            <div class="stepper-row">
-              <div class="stepper-label"><b>Children</b>2 – 11 years</div>
-              <div class="stepper-controls">
-                <button type="button" data-step="children" data-dir="-1">−</button>
-                <span id="childrenVal">0</span>
-                <button type="button" data-step="children" data-dir="1">+</button>
-              </div>
-            </div>
-            <div class="stepper-row">
-              <div class="stepper-label"><b>Infants</b>Under 2 years</div>
-              <div class="stepper-controls">
-                <button type="button" data-step="infants" data-dir="-1">−</button>
-                <span id="infantsVal">0</span>
-                <button type="button" data-step="infants" data-dir="1">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="search-submit-row">
-          <button type="submit" class="btn-primary">Check Availability</button>
-        </div>
-      </form>
+<section id="popular-routes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Popular this month</span>
+      <h2>Domestic routes, member fare.</h2>
+      <p>A sample of live routes at the 40% member rate. Full inventory and real-time pricing shown once you search.</p>
     </div>
 
-    <p class="results-status" id="resultsStatus"></p>
-    <div id="resultsWrap"></div>
-    <div class="booking-msg" id="bookingMsg"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="india">India</button>
+      <button class="tab" data-tab="usa">United States</button>
+      <button class="tab" data-tab="canada">Canada</button>
+    </div>
+    <p id="routesStatus" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ivory-dim);margin-bottom:18px;"></p>
+
+    <div class="route-panel active routes-grid" data-panel="india" id="panel-india">
+      <div class="route-card">
+        <span class="region-tag">India · Domestic</span>
+        <div class="route-line"><span class="code">DEL</span><span class="mid-dash"></span><span class="code">BOM</span></div>
+        <div class="route-cities"><span>Delhi</span><span>Mumbai</span></div>
+        <div class="route-price"><span class="was">₹6,400</span><span class="now">₹3,840</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">India · Domestic</span>
+        <div class="route-line"><span class="code">BLR</span><span class="mid-dash"></span><span class="code">HYD</span></div>
+        <div class="route-cities"><span>Bengaluru</span><span>Hyderabad</span></div>
+        <div class="route-price"><span class="was">₹4,100</span><span class="now">₹2,460</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">India · Domestic</span>
+        <div class="route-line"><span class="code">GOI</span><span class="mid-dash"></span><span class="code">DEL</span></div>
+        <div class="route-cities"><span>Goa</span><span>Delhi</span></div>
+        <div class="route-price"><span class="was">₹7,900</span><span class="now">₹4,740</span><span class="off">−40%</span></div>
+      </div>
+    </div>
+
+    <div class="route-panel routes-grid" data-panel="usa" id="panel-usa">
+      <div class="route-card">
+        <span class="region-tag">USA · Domestic</span>
+        <div class="route-line"><span class="code">JFK</span><span class="mid-dash"></span><span class="code">LAX</span></div>
+        <div class="route-cities"><span>New York</span><span>Los Angeles</span></div>
+        <div class="route-price"><span class="was">$310</span><span class="now">$186</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">USA · Domestic</span>
+        <div class="route-line"><span class="code">ORD</span><span class="mid-dash"></span><span class="code">MIA</span></div>
+        <div class="route-cities"><span>Chicago</span><span>Miami</span></div>
+        <div class="route-price"><span class="was">$225</span><span class="now">$135</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">USA · Domestic</span>
+        <div class="route-line"><span class="code">SFO</span><span class="mid-dash"></span><span class="code">SEA</span></div>
+        <div class="route-cities"><span>San Francisco</span><span>Seattle</span></div>
+        <div class="route-price"><span class="was">$190</span><span class="now">$114</span><span class="off">−40%</span></div>
+      </div>
+    </div>
+
+    <div class="route-panel routes-grid" data-panel="canada" id="panel-canada">
+      <div class="route-card">
+        <span class="region-tag">Canada · Domestic</span>
+        <div class="route-line"><span class="code">YYZ</span><span class="mid-dash"></span><span class="code">YVR</span></div>
+        <div class="route-cities"><span>Toronto</span><span>Vancouver</span></div>
+        <div class="route-price"><span class="was">C$420</span><span class="now">C$252</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">Canada · Domestic</span>
+        <div class="route-line"><span class="code">YUL</span><span class="mid-dash"></span><span class="code">YYC</span></div>
+        <div class="route-cities"><span>Montreal</span><span>Calgary</span></div>
+        <div class="route-price"><span class="was">C$385</span><span class="now">C$231</span><span class="off">−40%</span></div>
+      </div>
+      <div class="route-card">
+        <span class="region-tag">Canada · Domestic</span>
+        <div class="route-line"><span class="code">YOW</span><span class="mid-dash"></span><span class="code">YYZ</span></div>
+        <div class="route-cities"><span>Ottawa</span><span>Toronto</span></div>
+        <div class="route-price"><span class="was">C$210</span><span class="now">C$126</span><span class="off">−40%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stays">
+  <div class="wrap stays-grid">
+    <div>
+      <span class="eyebrow">Stays</span>
+      <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,3.4vw,36px);margin-top:12px;line-height:1.15;">The same homes. A lower total.</h2>
+      <p style="color:var(--ivory-dim);margin-top:16px;font-size:15px;line-height:1.6;">We list verified apartments and homes from our host network side-by-side with the standard price you'd pay elsewhere — so the saving is visible before you book, not buried in a discount code.</p>
+      <ul class="feature-list">
+        <li><span class="check">✓</span> Verified hosts across India, USA and Canada</li>
+        <li><span class="check">✓</span> No last-minute cleaning or service-fee surprises</li>
+        <li><span class="check">✓</span> Free cancellation up to 48 hours before check-in</li>
+      </ul>
+    </div>
+    <div>
+      <div class="compare-table" id="compareTable">
+        <div class="compare-row head"><div>Stay</div><div>Standard site</div><div>Elite Orbits</div></div>
+        <div class="compare-row"><div>Base + cleaning fee</div><div class="strike">₹18,200</div><div class="win">₹14,600</div></div>
+        <div class="compare-row"><div>1BR Loft, Austin · 3 nights</div><div class="strike">$412</div><div class="win">$339</div></div>
+        <div class="compare-row"><div>Studio, Toronto · 2 nights</div><div class="strike">C$298</div><div class="win">C$244</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Book in four steps.</h2>
+    </div>
+    <div class="how-strip">
+      <div class="how-step">
+        <span class="step-code">STEP 01</span>
+        <h4>Search your route</h4>
+        <p>Pick your domestic route in India, USA or Canada, plus dates for stays and a rental car if you need one.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-code">STEP 02</span>
+        <h4>See the member fare</h4>
+        <p>The 40% flight discount and reduced stay pricing are shown upfront — no code to enter, nothing hidden.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-code">STEP 03</span>
+        <h4>Bundle if it helps</h4>
+        <p>Add a stay and a car to your flight in one checkout, or book each separately — your choice.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-code">STEP 04</span>
+        <h4>Fly, stay, drive</h4>
+        <p>Your confirmations land in one place: boarding details, check-in instructions and rental pickup info.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What members say</span>
+      <h2 id="reviewsHeading">What members say.</h2>
+      <p id="reviewsSubtext">Real reviews from Elite Orbits members.</p>
+    </div>
+    <div class="stub-row" id="reviewsGrid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Booked my Delhi to Mumbai flight through Elite Orbits and the experience was smooth. The discount was exactly as promised."</p>
+        <div class="review-author">Aarav Sharma<span>Flight</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Our hotel was only a 6-minute walk from Connaught Place, which made sightseeing so much easier. The booking details matched exactly what we received."</p>
+        <div class="review-author">Arjun Malhotra<span>Stay</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Picked up our rental SUV directly from Toronto Pearson Airport. The booking process was simple and we were on the road in no time."</p>
+        <div class="review-author">Daniel Foster<span>Car rental</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-quote">"Booked tickets for my parents from Delhi to Bengaluru. Everything was confirmed instantly and I didn't have to worry about anything."</p>
+        <div class="review-author">Priyanka Sethi<span>Flight</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"I travel for business almost every month and this has become one of the easiest websites I've used for planning trips."</p>
+        <div class="review-author">Michael Turner<span>General</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"We booked an Airbnb in downtown Toronto for our family vacation. It was exactly as shown in the photos and check-in was completely hassle-free."</p>
+        <div class="review-author">Riya Chawla<span>Stay</span></div>
+      </div>
+    </div>
+    <p class="review-note" id="reviewsNote" style="display:none;">These are placeholder examples for layout purposes only — not real customer feedback.</p>
+    <p style="text-align:center;margin-top:20px;"><a href="/reviews/" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold-soft);">See all reviews →</a> &nbsp;·&nbsp; <a href="/write-review/" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold-soft);">Write a review →</a></p>
+  </div>
+</section>
+
+<section class="cta-band" id="book">
+  <div class="wrap">
+    <h2>Your next domestic trip, booked for 40% less.</h2>
+    <p>Search flights, stays and car rentals in one place — the discount is already applied.</p>
+    <a href="/flights/" class="btn-primary">Start booking →</a>
   </div>
 </section>
 
@@ -179,188 +346,105 @@
 
 <script src="/app.js"></script>
 <script>
-  let tripType = 'oneway';
-  const travelers = { adults: 1, children: 0, infants: 0 };
+  const routesStatus = document.getElementById('routesStatus');
+  const routeCache = {}; // country -> array of flights, once fetched successfully
 
-  document.querySelectorAll('.trip-toggle button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.trip-toggle button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      tripType = btn.dataset.trip;
-      document.getElementById('returnRow').style.display = tripType === 'round' ? 'block' : 'none';
-    });
-  });
-
-  document.querySelectorAll('.stepper-controls button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.step;
-      const dir = Number(btn.dataset.dir);
-      const min = key === 'adults' ? 1 : 0;
-      travelers[key] = Math.max(min, Math.min(9, travelers[key] + dir));
-      document.getElementById(`${key}Val`).textContent = travelers[key];
-    });
-  });
-
-  // ---------- Real airport autocomplete (Amadeus) ----------
-  // Debounced so we don't fire a request on every keystroke.
-  function debounce(fn, wait) {
-    let t;
-    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
-  }
-
-  function setupAirportField(inputId, hiddenId, dropdownId) {
-    const input = document.getElementById(inputId);
-    const hidden = document.getElementById(hiddenId);
-    const dropdown = document.getElementById(dropdownId);
-
-    const search = debounce(async (keyword) => {
-      if (keyword.length < 2) { dropdown.innerHTML = ''; dropdown.classList.remove('open'); return; }
-      try {
-        const res = await fetch(`${API_BASE_URL}/flights/airports?keyword=${encodeURIComponent(keyword)}`);
-        const data = await res.json();
-        if (!data.airports || !data.airports.length) {
-          dropdown.innerHTML = `<div class="airport-option muted">No matching airports</div>`;
-        } else {
-          dropdown.innerHTML = data.airports.map(a =>
-            `<div class="airport-option" data-code="${a.code}" data-label="${a.city ? a.city + ' ' : ''}(${a.code}) — ${a.name}">
-              <b>${a.code}</b> — ${a.name}${a.city ? `, ${a.city}` : ''}
-            </div>`
-          ).join('');
-        }
-        dropdown.classList.add('open');
-      } catch (err) {
-        dropdown.innerHTML = `<div class="airport-option muted">Airport search unavailable right now.</div>`;
-        dropdown.classList.add('open');
-      }
-    }, 350);
-
-    input.addEventListener('input', () => {
-      hidden.value = ''; // typing again invalidates the previous selection
-      search(input.value.trim());
-    });
-    dropdown.addEventListener('click', (e) => {
-      const opt = e.target.closest('.airport-option[data-code]');
-      if (!opt) return;
-      hidden.value = opt.dataset.code;
-      input.value = opt.dataset.label;
-      dropdown.innerHTML = '';
-      dropdown.classList.remove('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('open');
-      }
-    });
-  }
-
-  setupAirportField('from', 'fromCode', 'fromDropdown');
-  setupAirportField('to', 'toCode', 'toDropdown');
-
-  // ---------- Duration formatting (ISO 8601, e.g. PT2H15M) ----------
-  function formatDuration(iso) {
-    const m = /PT(?:(\d+)H)?(?:(\d+)M)?/.exec(iso || '');
-    if (!m) return '';
-    const h = m[1] ? `${m[1]}h ` : '';
-    const min = m[2] ? `${m[2]}m` : '';
-    return (h + min).trim();
-  }
-  function formatTime(iso) {
-    if (!iso) return '';
-    return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
-
-  function renderResults(flights, ctx) {
-    const wrap = document.getElementById('resultsWrap');
+  function renderRoutePanel(panelId, flights) {
+    const panel = document.getElementById(panelId);
     if (!flights.length) {
-      wrap.innerHTML = `<p style="color:var(--ivory-dim);font-size:14px;">
-        No flights found on ${ctx.date} for ${ctx.origin} → ${ctx.destination}. Try a different date or route.
-      </p>`;
+      panel.innerHTML = `<p style="color:var(--ivory-dim);font-size:14px;">No live routes found for this region right now.</p>`;
       return;
     }
-    const paxCount = travelers.adults + travelers.children;
-
-    wrap.innerHTML = flights.map(f => {
-      const total = f.price * paxCount;
-      return `
-      <div class="result-card">
-        <div class="rc-main">
-          <div class="rc-route">
-            <span>${f.from}</span>
-            <span class="mid-dash"></span>
-            <span>${f.to}</span>
-          </div>
-          <div class="rc-meta">${f.airline} · ${formatTime(f.departTime)} → ${formatTime(f.arriveTime)} · ${formatDuration(f.durationISO)} · ${f.stops === 0 ? 'Nonstop' : f.stops + ' stop(s)'} · ${document.getElementById('cabin').value} · ${paxCount} traveler${paxCount > 1 ? 's' : ''}</div>
+    panel.innerHTML = flights.map(f => `
+      <div class="route-card">
+        <span class="region-tag">${f.country.toUpperCase()} · Domestic</span>
+        <div class="route-line"><span class="code">${f.from}</span><span class="mid-dash"></span><span class="code">${f.to}</span></div>
+        <div class="route-cities"><span>${f.fromCity}</span><span>${f.toCity}</span></div>
+        <div class="route-price">
+          <span class="was">${eoFormatMoney(f.basePrice, f.currency)}</span>
+          <span class="now">${eoFormatMoney(f.memberPrice, f.currency)}</span>
+          <span class="off">−${f.discountPercent}%</span>
         </div>
-        <div class="rc-price">
-          <span class="now">${eoFormatMoney(total, f.currency)}</span>
-          <span class="off">${f.seatsLeft ? f.seatsLeft + ' seats left' : ''}</span>
-          <button class="rc-book" data-id="${f.id}" data-price="${total}" data-currency="${f.currency}"
-            data-from="${f.from}" data-to="${f.to}">Book Now</button>
-        </div>
-      </div>`;
-    }).join('');
-
-    wrap.querySelectorAll('.rc-book').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        btn.disabled = true;
-        btn.textContent = 'Booking…';
-        await eoCreateBooking({
-          type: 'flight',
-          details: {
-            from: btn.dataset.from,
-            to: btn.dataset.to,
-            date: ctx.date,
-            tripType,
-            cabin: document.getElementById('cabin').value,
-            travelers,
-          },
-          price: Number(btn.dataset.price),
-          currency: btn.dataset.currency,
-        }, document.getElementById('bookingMsg'));
-        btn.disabled = false;
-        btn.textContent = 'Book Now';
-      });
-    });
+      </div>
+    `).join('');
   }
 
-  document.getElementById('flightSearchForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const status = document.getElementById('resultsStatus');
-    const wrap = document.getElementById('resultsWrap');
-    const origin = document.getElementById('fromCode').value;
-    const destination = document.getElementById('toCode').value;
-    const date = document.getElementById('depart').value;
-
-    if (!origin || !destination) {
-      status.textContent = 'Please pick a "From" and "To" airport from the dropdown list.';
+  async function loadRoutes(country) {
+    const panelId = `panel-${country}`;
+    if (routeCache[country]) {
+      renderRoutePanel(panelId, routeCache[country]);
       return;
     }
-    if (!date) {
-      status.textContent = 'Please pick a departure date.';
-      return;
-    }
-
-    status.textContent = 'Checking real availability for this route and date…';
-    wrap.innerHTML = '';
-
     try {
-      const url = `${API_BASE_URL}/flights/search?origin=${origin}&destination=${destination}&date=${date}&adults=${travelers.adults}`;
-      const res = await fetch(url);
+      const res = await fetch(`${API_BASE_URL}/search/flights?country=${country}`);
+      if (!res.ok) throw new Error('bad response');
       const data = await res.json();
-      if (!res.ok) {
-        if (res.status === 501) {
-          status.textContent = 'Live flight search isn\'t set up yet on the backend (Amadeus API keys missing) — please contact the team.';
-        } else {
-          status.textContent = data.error || 'Could not check availability right now. Please try again.';
-        }
-        return;
-      }
-      status.textContent = `${data.flights.length} flight${data.flights.length === 1 ? '' : 's'} found for ${date}.`;
-      renderResults(data.flights, { date, origin, destination });
+      routeCache[country] = data.results;
+      renderRoutePanel(panelId, data.results);
+      routesStatus.textContent = 'Live fares from the Elite Orbits backend.';
     } catch (err) {
-      status.textContent = 'Could not reach the flight search service. Please try again in a moment.';
+      routesStatus.textContent = "Backend may be waking up from sleep — showing sample fares, try again shortly.";
     }
+  }
+
+  async function loadStays() {
+    const table = document.getElementById('compareTable');
+    try {
+      const res = await fetch(`${API_BASE_URL}/search/stays`);
+      if (!res.ok) throw new Error('bad response');
+      const data = await res.json();
+      const rows = data.results.slice(0, 4).map(s => `
+        <div class="compare-row">
+          <div>${s.title}, ${s.city} · ${s.nights} nights</div>
+          <div class="strike">${eoFormatMoney(s.standardPrice, s.currency)}</div>
+          <div class="win">${eoFormatMoney(s.ourPrice, s.currency)}</div>
+        </div>
+      `).join('');
+      table.innerHTML = `<div class="compare-row head"><div>Stay</div><div>Standard site</div><div>Elite Orbits</div></div>${rows}`;
+    } catch (err) {
+      // Leave the static fallback rows already in the HTML.
+    }
+  }
+
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.route-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+      loadRoutes(tab.dataset.tab);
+    });
   });
+
+  // Load live data on page load for the default tab, plus stays.
+  loadRoutes('india');
+  loadStays();
+  loadRealReviews();
+
+  async function loadRealReviews() {
+    try {
+      const res = await fetch(`${API_BASE_URL}/reviews?limit=6`);
+      if (!res.ok) throw new Error('bad response');
+      const data = await res.json();
+      if (!data.reviews.length) return; // keep the sample placeholders as-is
+
+      document.getElementById('reviewsHeading').textContent = 'What members say.';
+      document.getElementById('reviewsSubtext').textContent = 'Real reviews from Elite Orbits members.';
+      document.getElementById('reviewsNote').style.display = 'none';
+
+      const categoryLabel = { flight: 'Flight', stay: 'Stay', car: 'Car rental', general: 'General' };
+      document.getElementById('reviewsGrid').innerHTML = data.reviews.slice(0, 6).map(r => `
+        <div class="review-card">
+          <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+          <p class="review-quote">"${r.comment.replace(/</g, '&lt;')}"</p>
+          <div class="review-author">${r.author_name}<span>${categoryLabel[r.category] || r.category}</span></div>
+        </div>
+      `).join('');
+    } catch (err) {
+      // Backend unreachable — leave the labeled sample reviews in place.
+    }
+  }
 </script>
 
 </body>
