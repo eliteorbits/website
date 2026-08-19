@@ -1,1 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XS376425K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6XS376425K');
+</script>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Booking — Compare & Book Flights | Elite Orbits</title>
+<link rel="icon" type="image/png" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<meta name="description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eliteorbits.com/flights/">
+<meta property="og:site_name" content="Elite Orbits">
+<meta property="og:title" content="Flight Booking — Compare & Book Flights | Elite Orbits">
+<meta property="og:description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
+<meta property="og:url" content="https://eliteorbits.com/flights/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/logo-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flight Booking — Compare & Book Flights | Elite Orbits">
+<meta name="twitter:description" content="Search and compare flight fares across routes, then book instantly and confirm your ticket over WhatsApp with the Elite Orbits team.">
+<meta name="author" content="Elite Orbits">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/">
+      <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+      Elite Orbits
+    </a>
+    <div class="nav-mobile-actions">
+      <a href="/login/" class="nav-login-mobile" aria-label="Log In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.4-4 4-6 7.5-6s6.1 2 7.5 6"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/flights/">Flights</a>
+      <a href="/stays/">Stays</a>
+      <a href="/cars/">Car Rentals</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+      <a href="/login/" id="navAccountLink">Log In</a>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:40px;">
+  <div class="wrap">
+    <span class="crumb"><a href="/">Home</a> / Flights</span>
+    <h1>Find your next domestic flight.</h1>
+    <p>Search India, USA, and Canada domestic routes — the 40% member fare is applied automatically.</p>
+  </div>
+</section>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="search-panel">
+      <div class="trip-toggle">
+        <button type="button" class="active" data-trip="oneway">One-Way</button>
+        <button type="button" data-trip="round">Round Trip</button>
+      </div>
+
+      <form id="flightSearchForm">
+        <div class="search-grid">
+          <div class="form-row airport-field">
+            <label for="from">From (airport)</label>
+            <input type="text" id="from" autocomplete="off" placeholder="City or airport code, e.g. Delhi or DEL" required>
+            <input type="hidden" id="fromCode">
+            <div class="airport-dropdown" id="fromDropdown"></div>
+          </div>
+          <div class="form-row airport-field">
+            <label for="to">To (airport)</label>
+            <input type="text" id="to" autocomplete="off" placeholder="City or airport code, e.g. Mumbai or BOM" required>
+            <input type="hidden" id="toCode">
+            <div class="airport-dropdown" id="toDropdown"></div>
+          </div>
+          <div class="form-row">
+            <label for="cabin">Cabin class</label>
+            <select id="cabin">
+              <option>Economy</option>
+              <option>Premium Economy</option>
+              <option>Business</option>
+              <option>First Class</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="depart">Departure</label>
+            <input type="date" id="depart" required>
+          </div>
+          <div class="form-row" id="returnRow" style="display:none;">
+            <label for="returnDate">Return</label>
+            <input type="date" id="returnDate">
+          </div>
+
+          <div class="form-row full stepper-group" style="grid-column:span 2;">
+            <div class="stepper-row">
+              <div class="stepper-label"><b>Adults</b>12 years and older</div>
+              <div class="stepper-controls">
+                <button type="button" data-step="adults" data-dir="-1">−</button>
+                <span id="adultsVal">1</span>
+                <button type="button" data-step="adults" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <div class="stepper-label"><b>Children</b>2 – 11 years</div>
+              <div class="stepper-controls">
+                <button type="button" data-step="children" data-dir="-1">−</button>
+                <span id="childrenVal">0</span>
+                <button type="button" data-step="children" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <div class="stepper-label"><b>Infants</b>Under 2 years</div>
+              <div class="stepper-controls">
+                <button type="button" data-step="infants" data-dir="-1">−</button>
+                <span id="infantsVal">0</span>
+                <button type="button" data-step="infants" data-dir="1">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-submit-row">
+          <button type="submit" class="btn-primary">Check Availability</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="results-status" id="resultsStatus"></p>
+    <div id="resultsWrap"></div>
+    <div class="booking-msg" id="bookingMsg"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-social" id="footerSocial"></div>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <a class="logo" href="/" style="margin-bottom:14px;">
+        <span class="logo-mark"><img src="/assets/logo-mark.png" alt="Elite Orbits" style="width:100%;height:100%;object-fit:contain;"></span>
+        Elite Orbits
+      </a>
+      <p style="color:var(--ivory-dim);font-size:13.5px;line-height:1.6;max-width:260px;">Domestic flight savings, better-priced stays and airport car rentals across India, the USA and Canada.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Book</h5>
+      <ul><li><a href="/flights/">Flights</a></li><li><a href="/stays/">Stays</a></li><li><a href="/cars/">Car Rentals</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li><li><a href="/reviews/">Reviews</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regions</h5>
+      <ul><li>India</li><li>United States</li><li>Canada</li></ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Elite Orbits</span>
+    <span><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/cancellation-policy/">Cancellation</a> · <a href="/booking-policy/">Booking</a> · <a href="/cookie-policy/">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+<script>
+  let tripType = 'oneway';
+  const travelers = { adults: 1, children: 0, infants: 0 };
+
+  document.querySelectorAll('.trip-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.trip-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tripType = btn.dataset.trip;
+      document.getElementById('returnRow').style.display = tripType === 'round' ? 'block' : 'none';
+    });
+  });
+
+  document.querySelectorAll('.stepper-controls button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.step;
+      const dir = Number(btn.dataset.dir);
+      const min = key === 'adults' ? 1 : 0;
+      travelers[key] = Math.max(min, Math.min(9, travelers[key] + dir));
+      document.getElementById(`${key}Val`).textContent = travelers[key];
+    });
+  });
+
+  // ---------- Real airport autocomplete (Amadeus) ----------
+  // Debounced so we don't fire a request on every keystroke.
+  function debounce(fn, wait) {
+    let t;
+    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+  }
+
+  function setupAirportField(inputId, hiddenId, dropdownId) {
+    const input = document.getElementById(inputId);
+    const hidden = document.getElementById(hiddenId);
+    const dropdown = document.getElementById(dropdownId);
+
+    const search = debounce(async (keyword) => {
+      if (keyword.length < 2) { dropdown.innerHTML = ''; dropdown.classList.remove('open'); return; }
+      try {
+        const res = await fetch(`${API_BASE_URL}/flights/airports?keyword=${encodeURIComponent(keyword)}`);
+        const data = await res.json();
+        if (!data.airports || !data.airports.length) {
+          dropdown.innerHTML = `<div class="airport-option muted">No matching airports</div>`;
+        } else {
+          dropdown.innerHTML = data.airports.map(a =>
+            `<div class="airport-option" data-code="${a.code}" data-label="${a.city ? a.city + ' ' : ''}(${a.code}) — ${a.name}">
+              <b>${a.code}</b> — ${a.name}${a.city ? `, ${a.city}` : ''}
+            </div>`
+          ).join('');
+        }
+        dropdown.classList.add('open');
+      } catch (err) {
+        dropdown.innerHTML = `<div class="airport-option muted">Airport search unavailable right now.</div>`;
+        dropdown.classList.add('open');
+      }
+    }, 350);
+
+    input.addEventListener('input', () => {
+      hidden.value = ''; // typing again invalidates the previous selection
+      search(input.value.trim());
+    });
+    dropdown.addEventListener('click', (e) => {
+      const opt = e.target.closest('.airport-option[data-code]');
+      if (!opt) return;
+      hidden.value = opt.dataset.code;
+      input.value = opt.dataset.label;
+      dropdown.innerHTML = '';
+      dropdown.classList.remove('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+
+  setupAirportField('from', 'fromCode', 'fromDropdown');
+  setupAirportField('to', 'toCode', 'toDropdown');
+
+  // ---------- Duration formatting (ISO 8601, e.g. PT2H15M) ----------
+  function formatDuration(iso) {
+    const m = /PT(?:(\d+)H)?(?:(\d+)M)?/.exec(iso || '');
+    if (!m) return '';
+    const h = m[1] ? `${m[1]}h ` : '';
+    const min = m[2] ? `${m[2]}m` : '';
+    return (h + min).trim();
+  }
+  function formatTime(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderResults(flights, ctx) {
+    const wrap = document.getElementById('resultsWrap');
+    if (!flights.length) {
+      wrap.innerHTML = `<p style="color:var(--ivory-dim);font-size:14px;">
+        No flights found on ${ctx.date} for ${ctx.origin} → ${ctx.destination}. Try a different date or route.
+      </p>`;
+      return;
+    }
+    const paxCount = travelers.adults + travelers.children;
+
+    wrap.innerHTML = flights.map(f => {
+      const total = f.price * paxCount;
+      return `
+      <div class="result-card">
+        <div class="rc-main">
+          <div class="rc-route">
+            <span>${f.from}</span>
+            <span class="mid-dash"></span>
+            <span>${f.to}</span>
+          </div>
+          <div class="rc-meta">${f.airline} · ${formatTime(f.departTime)} → ${formatTime(f.arriveTime)} · ${formatDuration(f.durationISO)} · ${f.stops === 0 ? 'Nonstop' : f.stops + ' stop(s)'} · ${document.getElementById('cabin').value} · ${paxCount} traveler${paxCount > 1 ? 's' : ''}</div>
+        </div>
+        <div class="rc-price">
+          <span class="now">${eoFormatMoney(total, f.currency)}</span>
+          <span class="off">${f.seatsLeft ? f.seatsLeft + ' seats left' : ''}</span>
+          <button class="rc-book" data-id="${f.id}" data-price="${total}" data-currency="${f.currency}"
+            data-from="${f.from}" data-to="${f.to}">Book Now</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('.rc-book').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        btn.textContent = 'Booking…';
+        await eoCreateBooking({
+          type: 'flight',
+          details: {
+            from: btn.dataset.from,
+            to: btn.dataset.to,
+            date: ctx.date,
+            tripType,
+            cabin: document.getElementById('cabin').value,
+            travelers,
+          },
+          price: Number(btn.dataset.price),
+          currency: btn.dataset.currency,
+        }, document.getElementById('bookingMsg'));
+        btn.disabled = false;
+        btn.textContent = 'Book Now';
+      });
+    });
+  }
+
+  document.getElementById('flightSearchForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('resultsStatus');
+    const wrap = document.getElementById('resultsWrap');
+    const origin = document.getElementById('fromCode').value;
+    const destination = document.getElementById('toCode').value;
+    const date = document.getElementById('depart').value;
+
+    if (!origin || !destination) {
+      status.textContent = 'Please pick a "From" and "To" airport from the dropdown list.';
+      return;
+    }
+    if (!date) {
+      status.textContent = 'Please pick a departure date.';
+      return;
+    }
+
+    status.textContent = 'Checking real availability for this route and date…';
+    wrap.innerHTML = '';
+
+    try {
+      const url = `${API_BASE_URL}/flights/search?origin=${origin}&destination=${destination}&date=${date}&adults=${travelers.adults}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (!res.ok) {
+        if (res.status === 501) {
+          status.textContent = 'Live flight search isn\'t set up yet on the backend (Amadeus API keys missing) — please contact the team.';
+        } else {
+          status.textContent = data.error || 'Could not check availability right now. Please try again.';
+        }
+        return;
+      }
+      status.textContent = `${data.flights.length} flight${data.flights.length === 1 ? '' : 's'} found for ${date}.`;
+      renderResults(data.flights, { date, origin, destination });
+    } catch (err) {
+      status.textContent = 'Could not reach the flight search service. Please try again in a moment.';
+    }
+  });
+</script>
+
+</body>
+</html>
