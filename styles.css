@@ -340,7 +340,7 @@
   .cta-band{
     text-align:center;
     background:radial-gradient(ellipse at center, #1F1B10 0%, var(--bg-deep) 70%);
-    border-top:1px solid var(--line-silver);border-bottom:1px solid var(--line-silver);
+    border-bottom:1px solid var(--line-silver);
   }
   .cta-band h2{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,44px);font-weight:600;max-width:640px;margin:0 auto;}
   .cta-band p{color:var(--ivory-dim);margin-top:16px;font-size:15px;}
@@ -502,7 +502,7 @@
 /* ---------- footer social row ---------- */
 .footer-social{
   display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-  padding:40px 0 22px;border-bottom:1px solid var(--line-silver);
+  padding:22px 0;
 }
 .social-icon-btn{
   display:flex;align-items:center;justify-content:center;
@@ -557,3 +557,18 @@
   .logo{font-size:17px;}
   .hero h1{font-size:28px;}
 }
+
+/* ---------- airport autocomplete (flights search) ---------- */
+.airport-field{position:relative;}
+.airport-dropdown{
+  display:none;position:absolute;top:100%;left:0;right:0;z-index:40;
+  background:var(--bg-panel);border:1px solid var(--line-silver);border-top:none;
+  max-height:220px;overflow-y:auto;border-radius:0 0 4px 4px;
+}
+.airport-dropdown.open{display:block;}
+.airport-option{padding:10px 14px;font-size:13px;color:var(--ivory-dim);cursor:pointer;border-bottom:1px solid var(--line-silver);}
+.airport-option:last-child{border-bottom:none;}
+.airport-option:hover{background:rgba(232,199,102,0.08);color:var(--ivory);}
+.airport-option b{color:var(--gold-soft);}
+.airport-option.muted{cursor:default;color:var(--ivory-dim);font-style:italic;}
+.airport-option.muted:hover{background:none;}
